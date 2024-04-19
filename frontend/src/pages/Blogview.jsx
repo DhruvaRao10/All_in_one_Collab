@@ -1,14 +1,13 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Auth from "../components/Auth";
-function Homepage() {
+
+function Blogview() {
   return (
-    <>
+    <div className="">
       <Navbar />
-      <Auth />
       <Footer />
-    </>
+    </div>
   );
 }
 
-export default Homepage;
+export default Blogview;
