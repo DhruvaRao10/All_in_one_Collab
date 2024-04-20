@@ -7,9 +7,9 @@ function Dashboard() {
     <>
       <Navbar />
       <div className="flex justify-center">
-        <Cards />
-        <Cards />
-        <Cards />
+        <Cards content="blog" />
+        <Cards content="pair-programming" />
+        <Cards content="codeeditor" />
       </div>
       <Footer />
     </>

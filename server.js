@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const Axios = require("axios");
+const { exec } = require("child_process");
 const app = express();
 const PORT = 8000;
 
@@ -49,6 +50,21 @@ app.post("/compile", (req, res) => {
     .catch((error) => {
       console.log(error);
     });
+});
+//live server
+app.post("/run-live-server", (req, res) => {
+  const command = "live-server --port=9000";
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error("Error:", error);
+      res.status(500).send("An error occurred");
+      return;
+    }
+    console.log("stdout:", stdout);
+    console.error("stderr:", stderr);
+    res.send("live-server started successfully");
+  });
 });
 
 app.listen(process.env.PORT || PORT, () => {
