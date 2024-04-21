@@ -6,6 +6,7 @@ import Blogview from "./pages/Blogview";
 import Codeeditor from "./pages/Codeeditor";
 import ProtectedRoute from "./pages/ProtectedRoutes";
 import { UserProvider } from "./context/UserContext";
+import Createblog from "./pages/Createblog";
 function App() {
   return (
     <UserProvider>
@@ -41,6 +42,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Codeeditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="createblog"
+            element={
+              <ProtectedRoute>
+                <Createblog />
               </ProtectedRoute>
             }
           />
