@@ -10,9 +10,9 @@
 
 The All-In-One Collaborative Platform is a comprehensive web application designed to streamline collaborative work environments by integrating essential tools in one convenient platform. With a focus on versatility and efficiency, our platform offers a suite of features including a blog writing feature, video conferencing, an Integrated Development Environment (IDE), and an AI-powered chatbot.
 ## 🔗 Video Link
-[[youtube]](https://www.youtube.com/watch?v=1RUjIwE0cqE)
+[[youtube-link]](https://www.youtube.com/watch?v=1RUjIwE0cqE)
 ## 🔗 Presentation Link
-[[ppt]](https://www.linkedin.com/)
+[[ppt-link]](https://docs.google.com/presentation/d/164_DMuGW4aTF4Sqq85QqpyaYzjxeCdUi/edit?usp=sharing&ouid=105477474798579310326&rtpof=true&sd=true)
 
 
 
@@ -53,7 +53,7 @@ In the realm of online collaboration, there exists a multitude of platforms cate
 
 
 
-## Contributers
+## Contributors
 
 - [Dhruva rao](https://github.com/DhruvaRao10/All_in_one_Collab)
 - [Himanshu Patil](https://github.com/HimanshuPatil2003)
