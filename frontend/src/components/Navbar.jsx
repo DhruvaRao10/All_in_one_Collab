@@ -1,4 +1,12 @@
+import { useUserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 function Navbar() {
+  const { user, logout } = useUserContext();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -39,7 +47,7 @@ function Navbar() {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a onClick={handleClick}>Logout</a>
             </li>
           </ul>
         </div>

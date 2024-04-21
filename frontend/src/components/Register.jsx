@@ -29,6 +29,7 @@ function Register() {
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    const form = e.target;
     const { email, username, password } = formData;
     const userData = { email, username, password }; // Add role field
     const res = await axios.post(
@@ -39,6 +40,7 @@ function Register() {
       console.log(res);
       if (res.data.success) {
         toast.success(res.data.message, { className: "toast-success" }); // Add className for green color
+        form.reset();
         navigate("/");
       } else {
         toast.error(res.data.message);
