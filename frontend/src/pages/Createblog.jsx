@@ -1,23 +1,54 @@
-import React, { useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 const Createblog = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "node_modules/froala-editor/js/froala_editor.pkgd.min.js";
-    script.async = true;
-    document.body.appendChild(script);
+  const [formData, setFormData] = useState({
+    title: "",
+    snippet: "",
+    body: "",
+    imageFile: "",
+    videoFile: "",
+  });
 
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (typeof FroalaEditor !== "undefined") {
-      const editor = new FroalaEditor("#body");
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const { title, snippet, body, imageFile, videoFile } = formData;
+    const userData = { title, snippet, body, imageFile, videoFile }; // Add role field
+    const res = await axios.post("http://localhost:8000/blog/create", userData);
+    try {
+      console.log(res);
+      if (res.data.success) {
+        toast.success(res.data.message, { className: "toast-success" }); // Add className for green color
+        form.reset();
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      console.error("Error registering user:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Check Email and Name its already exist");
+      }
     }
-  }, []);
-
+    if (res.data.message === "Email is already registered") {
+      toast.error("Email is already registered. Please use another email.");
+    }
+    if (res.data.message === "Name is already registered") {
+      toast.error("Name is already registered. Please use another name.");
+    }
+  };
   async function uploadImage() {
     const fileInput = document.getElementById("fileInput");
     const file = fileInput.files[0];
@@ -66,13 +97,15 @@ const Createblog = () => {
         className="create-blog content"
         style={{ maxWidth: "600px", margin: "0 auto" }}
       >
-        <form action="/blogs" method="POST" encType="multipart/form-data">
+        <form onSubmit={handleOnSubmit}>
           <label htmlFor="title">Blog title:</label>
           <input
             type="text"
             className="input input-bordered input-sm w-full max-w-xs"
             id="title"
             name="title"
+            value={formData.title}
+            onChange={handleChange}
             required
           />
 
@@ -82,6 +115,8 @@ const Createblog = () => {
             className="input input-bordered input-sm w-full max-w-xs"
             id="snippet"
             name="snippet"
+            value={formData.snippet}
+            onChange={handleChange}
             required
           />
 
@@ -91,6 +126,8 @@ const Createblog = () => {
             id="body"
             name="body"
             style={{ height: "120px", borderRadius: "8px" }}
+            value={formData.body}
+            onChange={handleChange}
             required
           ></textarea>
 
@@ -98,18 +135,22 @@ const Createblog = () => {
           <input
             type="file"
             className="file-input file-input-bordered file-input-primary w-full max-w-xs"
-            name="image"
+            name="imageFile"
             id="imageFile"
             style={{ padding: "0" }}
+            value={formData.imageFile}
+            onChange={handleChange}
           />
 
           <label htmlFor="videoFile">Attach Video:</label>
           <input
             type="file"
             className="file-input file-input-bordered file-input-accent w-full max-w-xs"
-            name="video"
+            name="videoFile"
             id="videoFile"
             style={{ padding: "0" }}
+            value={formData.videoFile}
+            onChange={handleChange}
           />
 
           <button
