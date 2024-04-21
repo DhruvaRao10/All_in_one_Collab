@@ -4,15 +4,15 @@
 
 
 
-![Logo](https://i.postimg.cc/FFwvfkGk/built-at-hack36.png)
+![hack36](https://i.postimg.cc/FFwvfkGk/built-at-hack36.png)
 
 ![Logo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXdqazloMXQxZjIzb200bmt6ODkyYnlkZDluZDFmMm0xaXczMnEwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U4FkC2VqpeNRHjTDQ5/giphy.gif)
 
 The All-In-One Collaborative Platform is a comprehensive web application designed to streamline collaborative work environments by integrating essential tools in one convenient platform. With a focus on versatility and efficiency, our platform offers a suite of features including a blog writing feature, video conferencing, an Integrated Development Environment (IDE), and an AI-powered chatbot.
 ## 🔗 Video Link
-[[portfolio]](https://katherineoelsner.com/)
+[[youtube]](https://www.youtube.com/watch?v=1RUjIwE0cqE)
 ## 🔗 Presentation Link
-[[linkedin]](https://www.linkedin.com/)
+[[ppt]](https://www.linkedin.com/)
 
 
 
