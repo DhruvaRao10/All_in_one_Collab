@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Support</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="chatbox">
+        <div class="chatbox__support">
+          <div class="chatbox__header">
+            <div class="chatbox__image--header">
+              <img src="static/headerimg.jpg" alt="image" />
+            </div>
+            <div class="chatbox__content--header">
+              <h4 class="chatbox__heading--header">Chat support</h4>
+              <p class="chatbox__description--header">How can I help you?</p>
+            </div>
+          </div>
+          <div class="chatbox__messages">
+            <div></div>
+          </div>
+          <div id="speech-output"></div>
+          <div class="chatbox__footer">
+            <input type="text" placeholder="Write a message..." />
+            <div class="chatbox__mic">
+              <button>
+                <img
+                  src="{{ url_for('static', filename='mic.svg') }}"
+                  alt="microphone"
+                />
+              </button>
+            </div>
+            <div id="transcript"></div>
+            <div class="wave-container"></div>
+            <button class="chatbox__send--footer send__button">
+              <img
+                src="{{ url_for('static', filename='send.svg') }}"
+                alt="Send Icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="chatbox__button">
+          <button>
+            <img src="{{ url_for('static', filename='chatbox-icon.svg') }}" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='chatbox.js') }}"></script>
+  </body>
+</html>
