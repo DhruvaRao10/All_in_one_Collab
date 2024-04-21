@@ -3,11 +3,51 @@ const cors = require("cors");
 const Axios = require("axios");
 const { exec } = require("child_process");
 const app = express();
+require("dotenv").config();
+const userRouter = require("./routes/user");
+const blogRouter = require("./routes/blog");
+// const session = require("express-session");
+// const MongoDbStore = require("connect-mongo")(session);
+const mongoose = require("mongoose");
 const PORT = 8000;
 
 app.use(cors());
 app.use(express.json());
+// const http = require("http").createServer(app);
 
+// database connection
+mongoose.connect("mongodb://127.0.0.1:27017/Collaboratory", {});
+const connection = mongoose.connection;
+connection
+  .once("open", () => {
+    console.log("Database connected...");
+  })
+  .on("error", function (err) {
+    console.log(err);
+  });
+
+// session store
+// app.use(
+//   session({
+//     secret: "your-secret-key",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoDbStore({
+//       mongooseConnection: mongoose.connection,
+//       collection: "sessions", // Optional, specify the collection name
+//       ttl: 24 * 60 * 60, // Optional, session expiration in seconds
+//     }),
+//   })
+// );
+
+app.use(cors());
+app.use(express.json({ limit: "3mb" }));
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+// compiler code
 app.post("/compile", (req, res) => {
   //getting the required data from the request
   let code = req.body.code;
@@ -67,6 +107,11 @@ app.post("/run-live-server", (req, res) => {
   });
 });
 
+// routes
+app.use("/user", userRouter);
+app.use("/blog", blogRouter);
+
+// app listening
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
