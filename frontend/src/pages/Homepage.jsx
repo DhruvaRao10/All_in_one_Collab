@@ -7,10 +7,10 @@ function Homepage() {
     <>
       {/* <GlobeBackground /> */}
       <Navbar />
-      <Auth />
+      <Auth initialMode="register" />
       <Footer />
     </>
-  );
+  ); 
 }
 
 export default Homepage;

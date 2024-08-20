@@ -18,9 +18,9 @@ function Cards({ content }) {
   };
 
   const runBlog = () => {
-    navigate("/blog");
+    window.location.href = "http://localhost:300/blogs";
   };
-
+  
   if (content === "blog") {
     return (
       <div className={styles.dashboard}>

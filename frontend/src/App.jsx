@@ -7,12 +7,16 @@ import Codeeditor from "./pages/Codeeditor";
 import ProtectedRoute from "./pages/ProtectedRoutes";
 import { UserProvider } from "./context/UserContext";
 import Createblog from "./pages/Createblog";
+import Auth from "../../frontend/src/components/Auth" ; 
+
 function App() {
   return (
     <UserProvider>
       <BrowserRouter>
         <Routes>
-          <Route index path="/" element={<Homepage />} />
+          <Route index path="/" element={<Homepage />} /> 
+          <Route path="/login" element={<Auth initialMode="login" />} />
+
           <Route
             path="dashboard"
             element={

@@ -41,7 +41,9 @@ function Register() {
       if (res.data.success) {
         toast.success(res.data.message, { className: "toast-success" }); // Add className for green color
         form.reset();
-        navigate("/");
+        navigate("/login");
+
+        // toast.success("Registration successful! Please log in.");
       } else {
         toast.error(res.data.message);
       }
